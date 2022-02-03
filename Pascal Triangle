@@ -1,0 +1,38 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> solve(int A) {
+        ArrayList<ArrayList<Integer>> lis = new ArrayList<ArrayList<Integer>>();
+        if(A==0)
+        {
+            // ArrayList<Integer> minlis = new ArrayList<Integer>();
+            // lis.add(minlis);
+            return lis;
+        }
+        
+        ArrayList<Integer> minlis = new ArrayList<Integer>();
+        minlis.add(1);
+        lis.add(minlis);
+        if(A==1) return lis;
+        ArrayList<Integer> minlis2 = new ArrayList<Integer>();
+        minlis2.add(1);
+        minlis2.add(1);
+        lis.add(minlis2);
+        if(A==2) return lis;
+        int sum;
+        for(int i=2; i<A; i++)
+        {
+            ArrayList<Integer> minlist = new ArrayList<Integer>();
+            minlist.add(1);
+
+            ArrayList<Integer> old = lis.get(i-1);
+            for(int k=0; k<old.size()-1; k++)
+            {
+                sum = old.get(k) + old.get(k+1);
+                minlist.add(sum);
+                // System.out.println("Sum " + minlist);
+            }
+            minlist.add(1);
+            lis.add(minlist);
+        }
+        return lis;
+    }
+}
