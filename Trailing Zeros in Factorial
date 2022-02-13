@@ -1,0 +1,15 @@
+/**
+ * @input A : Integer
+ * 
+ * @Output Integer
+ */
+int trailingZeroes(int A) {
+    int fin = A/5;
+    int sum = fin;
+    while(fin/5>0)
+    {
+        sum+=fin/5;
+        fin/=5;
+    }
+    return sum;
+}
