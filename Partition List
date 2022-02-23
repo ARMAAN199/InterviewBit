@@ -1,0 +1,25 @@
+public class Solution {
+    public ListNode partition(ListNode A, int B) {
+         if(A == null) return null;
+        if(A.next == null) return A;
+        ListNode first = new ListNode(0);
+        ListNode second  = new ListNode(0);
+        ListNode firstHead = first;
+        ListNode secondHead = second;
+        while(A != null) {
+            if(A.val < B) {
+                firstHead.next = A;
+                firstHead = firstHead.next;
+                
+            }
+            else {
+                secondHead.next = A;
+                secondHead = secondHead.next;
+            }
+            A = A.next;
+        }
+        secondHead.next = null;
+        firstHead.next = second.next;
+        return first.next;
+    }
+}
