@@ -1,0 +1,20 @@
+string Solution::longestCommonPrefix(vector<string> &A) {
+    int m = 0;
+    char str;
+    while(true)
+    {
+        for(int i=0;i<A.size();i++)
+        {
+            if(m>=A[i].size())
+            {
+               return A[0].substr(0,m);
+            }
+            if(i==0) str = A[i][m];
+            if(A[i][m] != str)
+            {
+               return A[0].substr(0,m);
+            }
+        }
+        m++;
+    }
+}
