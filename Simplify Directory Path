@@ -1,0 +1,66 @@
+string Solution::simplifyPath(string A) {
+    deque <string> st;
+    st.push_back("/");
+    string str;
+    for(int i=1; i<A.size(); i++)
+    {
+        if(A[i]=='/')
+        {
+            if(str == "..")
+            {
+                while(st.size() >1 && st.back() == "/") st.pop_back();
+                if(st.size() > 1)
+                {
+                    st.pop_back();
+                }
+            }
+            else if(str != ".")
+            {
+                // if(st.back() != "/") st.push_back("/");
+                st.push_back(str);
+            }
+            str = "";
+        }
+        else
+        {
+            str+=A[i];
+        }
+    }
+    // if(str!="") st.push_back("/"+str);
+    // return string(st.rbegin(), st.rend());
+        deque<string>::iterator it;
+        string ans = "";
+        for (it = st.begin(); it != st.end(); ++it)
+        ans+= *it;
+        return ans;
+}
+
+// string Solution::simplifyPath(string A) {
+// stringstream ss(A);
+// string token;
+// stack <string> stk;
+
+// while(getline(ss, token, '/')){
+//     if(token == ".."){
+//         if(!stk.empty()){
+//             if(stk.top() != "/"){
+//                 stk.pop();
+//             }
+//         }
+//     }
+//     else if(token.empty() || token == ".");
+//     else
+//         stk.emplace(string(token.rbegin(), token.rend()));
+// }
+// string ans = "";
+// if(stk.empty()){
+//     return "/";
+// }
+// while(!stk.empty()){
+//     if(stk.top() != ""){
+//         ans += stk.top() + "/"; 
+//     }
+//     stk.pop();
+// }
+// return string(ans.rbegin(), ans.rend());
+// }
