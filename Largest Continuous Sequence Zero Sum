@@ -1,0 +1,36 @@
+public class Solution {
+    public ArrayList<Integer> lszero(ArrayList<Integer> A) {
+        HashMap<Integer, Integer> mp = new HashMap<Integer, Integer>();
+        mp.put(0,-1);
+        int sum=0;
+        int maxsize =0, index_s=-1, index_e=-1;
+        for(int i=0; i<A.size(); i++)
+        {
+            sum+=A.get(i);
+            if(mp.containsKey(sum))
+            {
+                // System.out.println("Found -> sum" + sum + " i " + i);
+                int temp = i-(mp.get(sum));
+                if(temp>maxsize)
+                {
+                    // System.out.println("Replacing maxsize" + temp + " mp.get(sum) " + mp.get(sum) + " i " + i);
+                    maxsize = temp;
+                    index_s = mp.get(sum)+1;
+                    index_e = i;
+                }
+            }
+            else
+            {
+                // System.out.println("Not found -> sum " + sum + " i " + i);
+                mp.put(sum, i);
+            }
+        }
+        
+        ArrayList<Integer> lis = new ArrayList<Integer>();
+        for(int i=index_s; i<=index_e && index_e!=-1; i++)
+        {
+            lis.add(A.get(i));
+        }
+        return lis;
+    }
+}
