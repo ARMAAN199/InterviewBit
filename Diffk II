@@ -1,0 +1,28 @@
+int Solution::diffPossible(const vector<int> &A, int k) {
+    map<int,int>mp;
+    for(int i=0;i<A.size();i++)
+    {
+        if((mp.count(A[i]-k) != 0) || (mp.count(k+A[i]) != 0))
+        {
+            // cout << "on " << A[i] << " looking for " << A[i]-k << endl;
+            // if(mp.count(A[i]-k) != 0)
+            return 1;
+        }
+        mp[A[i]]++;
+            // else
+            // {
+            //     // cout << "on " << A[i] << " looking for " << A[i]-k << endl;
+
+            // }
+        }
+        // else
+        // {
+        //     if(mp.count(A[i]+k) != 0)
+        //     return 1;
+        //     else
+        //     {
+        //         mp[A[i]]++;
+        //     }
+        // }
+    return 0;
+}
