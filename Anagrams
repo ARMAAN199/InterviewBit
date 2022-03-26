@@ -1,0 +1,31 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public String sorter(String str)
+    {
+        char tempArray[] = str.toCharArray();
+        Arrays.sort(tempArray);
+        return (new String(tempArray));
+    }
+    public ArrayList<ArrayList<Integer>> anagrams(final List<String> strs) {
+        HashMap<String, List<Integer>> mp = new HashMap<String, List<Integer>>();
+        String str;
+        // List<List<String>> lis = new ArrayList<List<String>>();
+        for(int i=0; i<strs.size(); i++)
+        {
+            str = sorter(strs.get(i));
+            if(mp.containsKey(str))
+            {
+                List<Integer> temp = (mp.get(str));
+                temp.add(i+1);
+                mp.put(str, temp);
+            }
+            else
+            {
+                List<Integer> temp = new ArrayList<Integer>();
+                temp.add(i+1);
+                mp.put(str, temp);
+            }
+        }
+        return new ArrayList(mp.values());
+    }
+}
