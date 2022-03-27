@@ -1,0 +1,14 @@
+public class Solution {
+    public int solve(String A) {
+            char[] nums = A.toCharArray();
+            HashMap<Character, Integer> mp = new HashMap<Character, Integer>();
+            for(int i=0; i<nums.length; i++)
+            {
+                if(mp.remove(nums[i]) != null);
+                else mp.put(nums[i],1);
+            }
+            if(mp.keySet().size()==1 || mp.keySet().size()==0)
+            return 1;
+            return 0;
+    }
+}
