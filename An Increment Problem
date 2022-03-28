@@ -1,0 +1,45 @@
+public class Solution {
+    
+    public int[] solve(int[] a) 
+    {
+        if(a.length==1)
+        return a;
+    
+    HashMap<Integer,Integer>m=new HashMap<>();   //element,index
+    for(int i=0;i<a.length;i++)
+    {
+        if(m.containsKey(a[i])==false)
+        {
+            m.put(a[i],i);
+        }
+        else if(m.containsKey(a[i]))
+        {
+            int idx=m.get(a[i]);
+            a[idx]=a[idx]+1;
+            
+            m.put(a[i],i);
+            
+            
+            
+            if(m.get(a[idx])==null)
+            {
+             
+                m.put(a[idx],idx);   
+            }
+            else
+            {
+                if(idx<m.get(a[idx]))
+                {
+                    m.put(a[idx],idx);
+                }
+            
+            }
+            
+            
+        }
+        
+    }
+        return a;
+    
+}
+}
