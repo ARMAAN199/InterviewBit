@@ -1,0 +1,73 @@
+vector<int> Solution::solve(vector<int> &A, vector<int> &B, vector<int> &C) {
+    map<int, int> smp;
+    map<int, int> dmp;
+    map<int, int> cmp;
+    vector<int> sol;
+    for(int i=0;i<A.size();i++)
+    {
+            smp[A[i]]++;
+    }
+    // for (auto i = smp.begin();i != smp.end(); i++)
+    // {
+    //     std::cout << i->first;
+    // }
+    // cout << endl;
+    // for (auto i = dmp.begin();i != dmp.end(); i++)
+    // {
+    //     std::cout << i->first;
+    // }
+    // cout << endl;
+    for(int i=0;i<B.size();i++)
+    {
+        if(smp.find(B[i]) == smp.end() && dmp.find(B[i]) == dmp.end())
+        {
+            smp[B[i]]++;
+            cmp[B[i]]++;
+        }
+        else if(smp.find(B[i]) != smp.end() != 0 && dmp.find(B[i]) == dmp.end() && cmp.find(B[i]) == cmp.end())
+        {
+            smp.erase(B[i]);
+            dmp[B[i]]++;
+        }
+    }
+    cmp.clear();
+    // for (auto i = smp.begin();i != smp.end(); i++)
+    // {
+    //     std::cout << i->first;
+    // }
+    // cout << endl;
+    // for (auto i = dmp.begin();i != dmp.end(); i++)
+    // {
+    //     std::cout << i->first;
+    // }
+    // cout << endl;
+    for(int i=0;i<C.size();i++)
+    {
+        if(smp.find(C[i]) == smp.end() && dmp.find(C[i]) == dmp.end())
+        {
+            smp[C[i]]++;
+            cmp[C[i]]++;
+        }
+        else if(smp.find(C[i]) != smp.end() != 0 && dmp.find(C[i]) == dmp.end() && cmp.find(C[i]) == cmp.end())
+        {
+            smp.erase(C[i]);
+            dmp[C[i]]++;
+        }
+    }
+    // for (auto i = smp.begin();i != smp.end(); i++)
+    // {
+    //     std::cout << i->first;
+    // }
+    // cout << endl;
+    // for (auto i = dmp.begin();i != dmp.end(); i++)
+    // {
+    //     std::cout << i->first;
+    // }
+    // cout << endl;
+    for (auto i = dmp.begin();i != dmp.end(); i++)
+    {
+        // std::cout << i->first;
+        sol.push_back(i->first);
+    }
+    return sol;
+}
